@@ -24,54 +24,36 @@ console.log("hello script js");
  * var sonyItems = getItemsByBrand( items, "Sony" ); // returns all items that are Sony
  */
 
-
-/* failed attempt
+var getItems = function( jsonObject ){
+  var itemList = [];
+  for (var i = 0; i < jsonObject.items.length; i++) {
+    itemList.push( jsonObject.items[i] );
+  }
+  return itemList;
+}
 
 var getItemsByBrand = function(items, brand){
-   for (var i = 0; i < items.length; i++) {
-    if (items[i].product.brand === brand) {
-      return items[i];
+  var brandItemList = [];
+  for (var x = 0; x < items.length; x++) {
+    if (items[x].product.brand === brand) {
+    brandItemList.push( items[x] );
     }
   }
+  return brandItemList;
 }
-
-var getItems = function(items) {
-  return items;
-}
-
-var allItemsArray= getItems(products.items);
-
-var result = [];
-result.push(getItemsByBrand(allItemsArray, "Nikon"));
-console.log( result);
-*/
-
-var getItems = function( jsonObject ){
-  var items = [];
-  for (var i = 0; i < jsonObject.items.length; i++) {
-    items.push( jsonObject.items[i] );
-  }
-  return items;
-}
-
-// var getItemsByBrand = function(items, brand){
-//   // some code
-// };
-
-
-// just call the function right here and console.log to test
-// var result = getItemsByBrand(allItemsArray, "Nikon");
-// console.log( result );
-
-// rest of code down here:
 
 var inputHappened = function(currentInput){
   console.log( products );
 
   // before you begin the code below:
+
   var allItemsArray = getItems( products ) ;
   console.log( allItemsArray );
+
   // do stuff with items array
 
-  return "WOW GOOGLE SHOPPING";
+  var result = getItemsByBrand(allItemsArray, currentInput);
+  console.log( result );
+
+  return result.length;
 };
