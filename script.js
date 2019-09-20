@@ -24,7 +24,7 @@ console.log("hello script js");
  * var sonyItems = getItemsByBrand( items, "Sony" ); // returns all items that are Sony
  */
 
-var getItems = function( jsonObject ){
+var getItems = function( jsonObject ) {
   var itemList = [];
   for (var i = 0; i < jsonObject.items.length; i++) {
     itemList.push( jsonObject.items[i] );
@@ -32,11 +32,11 @@ var getItems = function( jsonObject ){
   return itemList;
 }
 
-var getItemsByBrand = function(items, brand){
+var getItemsByBrand = function(items, brand) {
   var brandItemList = [];
   for (var x = 0; x < items.length; x++) {
     if (items[x].product.brand === brand) {
-    brandItemList.push( items[x] );
+    brandItemList.push( items[x].product.title );
     }
   }
   return brandItemList;
@@ -55,5 +55,5 @@ var inputHappened = function(currentInput){
   var result = getItemsByBrand(allItemsArray, currentInput);
   console.log( result );
 
-  return result.length;
+  return result;
 };
